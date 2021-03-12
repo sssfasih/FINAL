@@ -1,0 +1,8 @@
+{% extends 'classroom/base.html' %}
+{% load static %}
+{% block content %}
+
+
+ <a class="btn btn-danger" href="{% url 'classroom:absolute'  %}">Absolute Grading </a> 
+ <a class="btn btn-danger" href="{% url 'classroom:relative'  %}">Relative Grading</a> 
+  {% endblock %}

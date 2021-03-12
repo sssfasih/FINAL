@@ -1,0 +1,33 @@
+{% extends 'classroom/base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="jumbotron">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>      
+                    <th scope="col">Sheet Name</th>                     
+                    <th scope="col">Download Sheet</th>
+                    <th scope="col">Absolute Grade</th>
+                    <th scope="col">Relative Grade</th> 
+                </tr>
+            </thead>
+            <tbody>
+            {% for sheet in student.student_result.all %}   
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ sheet.sheet_name }}</td>
+                    <td><a href="{{ sheet.result_sheet.url }}" class="btn btn-primary" target="_blank">Download</a></td>
+                    <td><a class="btn btn-danger" href="{% url 'classroom:absolute' pk=sheet.id %}">Absolute View </a> </td>
+                    <td><a class="btn btn-danger" href="{% url 'classroom:relative' pk=sheet.id %}">Relative View </a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+ 
+</div>
+</div>
+{% endblock %}
+

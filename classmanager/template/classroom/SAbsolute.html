@@ -1,0 +1,73 @@
+
+{% extends 'classroom/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+  <div class="jumbotron">
+{% if given_marks.count == 0 %}
+<h2>You have not given any marks to {{ student.name }}.</h2>
+{% else %}
+<h3>Result of Class {{ teacher.name }} .{{teacher.subject}}</h3>
+
+<table class='table'>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Reg. no.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quiz1</th>
+      <th scope="col">Quiz2</th>
+      <th scope="col">Mid Term</th>
+      <th scope="col">Final Term</th>
+      <th scope="col">Project</th>
+      <th scope="col">Total</th>
+      <th scope="col">Grade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in result_attributes %}
+    <tr>
+      
+      <th>{{ result.Registration_Number }}</th>
+      <th>{{ result.Name }}</th>
+      <th>{{ result.Quiz1 }}</th>
+      <th>{{ result.Quiz2 }}</th>
+      <th>{{ result.Mid_Term }}</th>
+      <th>{{ result.Final_Term }}</th>
+      <th>{{ result.Project }}</th>
+      <th>{{ result.Total }}</th>
+      <th>{{ result.Grade }}</th>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tbody>
+    {% for result in qs %}
+    <tr>
+
+      <th>{{ result.Registration_Number }}</th>
+      <th>{{ result.Name }}</th>
+      <th>{{ result.Quiz1 }}</th>
+      <th>{{ result.Quiz2 }}</th>
+      <th>{{ result.Mid_Term }}</th>
+      <th>{{ result.Final_Term }}</th>
+      <th>{{ result.Project }}</th>
+      <th>{{ result.Total }}</th>
+      <th>{{ result.Grade }}</th>
+
+
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<br>
+
+{% endif %}
+<p>  </p>
+
+</div>
+</div>
+
+  {% endblock %}
