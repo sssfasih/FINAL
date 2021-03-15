@@ -32,6 +32,12 @@ def TeacherSignUp(request):
     registered = False
 
     if request.method == "POST":
+        #print("*****************")
+        emailxxx = request.POST.get('email')
+        if not str(emailxxx).endswith("@teachers.edu"):
+            #print("Does not end with @teachers.edu")
+            return HttpResponseRedirect(reverse("classroom:TeacherSignUp"))
+        #print("*****************")
         user_form = UserForm(data = request.POST)
         teacher_profile_form = TeacherProfileForm(data = request.POST)
 
